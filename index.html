@@ -131,9 +131,30 @@
   <source src="Link.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-<button id="play-music-btn" onclick="document.getElementById('bg-music').play(); this.style.display='none';">
+<button id="play-music-btn" onclick="playMusic()" style="position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#1aff00;color:#000;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;">
   ▶ Play Music
 </button>
+<button id="pause-music-btn" onclick="pauseMusic()" style="position:fixed;bottom:60px;right:20px;padding:10px 15px;background:#ff0000;color:#fff;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;display:none;">
+  ❚❚ Pause Music
+</button>
+<audio id="bg-music" loop style="display:none">
+  <source src="Link.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+<script>
+function playMusic() {
+  var music = document.getElementById("bg-music");
+  music.play();
+  document.getElementById("play-music-btn").style.display = "none";
+  document.getElementById("pause-music-btn").style.display = "block";
+}
+function pauseMusic() {
+  var music = document.getElementById("bg-music");
+  music.pause();
+  document.getElementById("pause-music-btn").style.display = "none";
+  document.getElementById("play-music-btn").style.display = "block";
+}
+</script>
 <nav>  
   <ul>  
       <li><a href="#About-Me">About-Me</a></li>  
@@ -250,6 +271,7 @@
 </section>
 </body>
 </html>
+
 
 
 
