@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The digital matrix</title>
- <body>
-    <audio autoplay loop>
+  <meta charset="UTF-8">
+  <title>The Matrix</title>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
     <source src="Link.mp3" type="audio/mpeg">
-    </audio>
- </body>
+  </audio>
+  <script>
+    const audio = document.getElementById('bg-music');
+    document.addEventListener('click', () => {
+      audio.muted = false;
+      audio.play();
+    }, { once: true });
+  </script>
+</body>
+</html>
     <style>
         body, html {
             margin: 0;
@@ -218,6 +226,7 @@
                 <b>Phone or Whatsapp:</b> +91-8857001510
             <p>Feel free to drop a message or a call!</p>
         </div>
+
 
 
 
