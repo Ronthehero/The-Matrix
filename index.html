@@ -111,13 +111,11 @@
       <div id="overlay"></div>  
     </div>  
 
-    <!-- Audio player outside video wrapper -->
-    <audio id="bg-music" autoplay loop style="display:none">
-      <source src="Link.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-
-    <!-- Fallback Play button for autoplay blocked browsers -->
+    <audio id="bg-music" loop style="display:none">
+  <source src="Link.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+    
     <button id="play-music-btn" onclick="document.getElementById('bg-music').play(); this.style.display='none';">
       ▶ Play Music
     </button>
@@ -147,3 +145,4 @@
 
   </body>
 </html>
+
