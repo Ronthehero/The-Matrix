@@ -23,7 +23,6 @@
         min-height: 100%;  
         z-index: -3;  
     }  
-
     #overlay {  
         position: fixed;  
         top: 0;  
@@ -33,7 +32,6 @@
         background: rgba(0, 0, 0, 0.5);  
         z-index: -2;  
     }  
-
     nav {  
         position: fixed;  
         top: 0;  
@@ -44,29 +42,24 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.255);  
         z-index: 1;  
     }  
-
     nav ul {  
         list-style-type: none;  
         margin: 0;  
         padding: 0;  
     }  
-
     nav ul li {  
         display: inline;  
         margin: 0 20px;  
     }  
-
     nav ul li a {  
         color: #1aff00;  
         text-decoration: none;  
         font-size: 18px;  
         transition: color 0.3s ease;  
     }  
-
     nav ul li a:hover {  
         color: #ff0000;  
     }  
-
     section {  
         display: flex;  
         justify-content: center;  
@@ -79,7 +72,6 @@
         min-height: 100vh;  
         width: 100%;  
     }  
-
     section div {  
         width: 75%;  
         max-width: 800px;  
@@ -88,7 +80,6 @@
         padding: 20px;  
         border-radius: 10px;  
     }  
-
     #play-music-btn {
       position: fixed;
       bottom: 20px;
@@ -103,6 +94,32 @@
       font-weight: bold;
       font-size: 16px;
     }
+    #footer-row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 56px;
+      background: rgba(0, 0, 0, 0.5);
+      margin: 0 auto;
+      padding: 60px 0;
+    }
+    .footer-col {
+      background: rgba(0, 0, 0, 0.80);
+      border-radius: 12px;
+      padding: 40px 30px;
+      min-width: 300px;
+      max-width: 400px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.17);
+      font-size: 1.08em;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      #footer-row {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+      }
+    }
 </style>  
 </head>  
 <body>  
@@ -110,16 +127,13 @@
   <iframe id="video-background" src="https://www.youtube.com/embed/2QVwEWIKMI8?autoplay=1&mute=1&loop=1&playlist=jPZEGEuBK1Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
   <div id="overlay"></div>  
 </div>
-
 <audio id="bg-music" loop style="display:none">
   <source src="Link.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-
 <button id="play-music-btn" onclick="document.getElementById('bg-music').play(); this.style.display='none';">
   ▶ Play Music
 </button>
-
 <nav>  
   <ul>  
       <li><a href="#About-Me">About-Me</a></li>  
@@ -133,15 +147,13 @@
       <li><a href="#Music-Credits">Music-Credits</a></li>
       <li><a href="#Contact-Me">Contact-Me</a></li>  
   </ul>  
-</nav>  
-
+</nav>
 <section id="About-Me">  
   <div>  
       <h1>About Me</h1>  
       <p>Rohan Vijayan, born on October 15, 2013, in Bangkok, is a remarkable young talent in the world of computing. His upbringing has been a multicultural journey, spanning Thailand, Singapore, and India, which has enriched his perspectives and experiences. Currently, Rohan is a student at The Bishop's School in Pune, where he continues to excel academically. Known as a computer prodigy, Rohan's aptitude for technology and programming has set him apart from his peers. His early exposure to diverse educational environments and cultures has undoubtedly contributed to his extraordinary abilities, making him a standout figure in the realm of young tech enthusiasts.</p>  
   </div>  
-</section>  
-
+</section>
 <section id="My-Story">  
   <div>  
       <h1>The Story Of My Life</h1>  
@@ -154,21 +166,16 @@
       <p>I spend some time with my friends and family, and I have fun with them.</p>  
       <p>Sometimes I even code using W3Schools and Mimo. Usually, W3Schools feels a bit boring but it's one of my coding-pathways, on the other hand Mimo feels fun like a game. I will continue to learn many coding and scripting languages.</p>    
   </div>  
-</section>  
-
+</section>
 <section id="Experience">  
   <div>  
       <h1>Experience</h1>  
       <p>Rohan Vijayan, an exceptional young mind born on October 15, 2013, has already established himself as a prodigy in the field of computer programming and technology. Growing up amidst the dynamic tech landscapes of Thailand, Singapore, and India, Rohan's passion for computing ignited at an early age. By the time he was six, he was already exploring basic coding concepts, and his insatiable curiosity soon led him to delve deeper into more complex programming languages like Python and JavaScript. His proficiency in these languages has enabled him to develop a variety of projects, ranging from simple games to more sophisticated applications that solve real-world problems.<br>  
-          
           Rohan's journey is marked by numerous accolades and achievements. He has participated in various coding competitions, consistently ranking at the top and earning recognition for his innovative solutions and clear understanding of programming principles. His talent has not gone unnoticed; Rohan has been invited to tech workshops and hackathons, where he has had the opportunity to collaborate with and learn from seasoned professionals. These experiences have broadened his knowledge and skills, allowing him to stay abreast of the latest technological advancements.<br>  
-          
           In addition to his technical prowess, Rohan is also an avid learner with a keen interest in the theoretical aspects of computer science. He spends considerable time studying algorithms, data structures, and the underlying mechanics of computer systems. This comprehensive approach to learning has given him a robust foundation, enabling him to tackle complex programming challenges with ease.<br>  
-          
           Currently studying at The Bishop's School in Pune, Rohan continues to balance his academic responsibilities with his passion for technology. His school projects often reflect his deep understanding of computer science, earning him praise from teachers and peers alike. As he continues to grow and learn, Rohan Vijayan stands as a testament to the boundless possibilities that come with dedication and a love for technology.</p>  
   </div>  
-</section>  
-
+</section>
 <section id="Education">  
   <div>  
       <h1>Education</h1>  
@@ -177,8 +184,7 @@
          <b>Online Courses:</b> Completed various courses on coding platforms like W3Schools and Mimo.<br>   
          <b>Self-Learning:</b> Spent countless hours learning and experimenting with new coding languages and technologies.<br>  
   </div>  
-</section>  
-
+</section>
 <section id="Coding-experience">  
   <div>  
     <h1>Coding Experience</h1>  
@@ -191,8 +197,7 @@
         <b>W3Schools:</b> The website that felt like an old school classic but taught me well.<br>  
         <b>Coding With Mimo:</b> A new platform I enjoy using for learning new coding and scripting languages.  
   </div>  
-</section>  
-
+</section>
 <section id="Cyber-Edu-pt1">  
   <div>  
     <h1>Cyber Education 1</h1>  
@@ -205,8 +210,7 @@
     <p><i>I became a Grey hat hacker - A hacker that decides to be ethical or unethical in certain cyber situation who's both good and bad, as i know... <u>these paths are inter-changeable</u></i></p>  
     <p>Not to mention but I'm not just a hacker, I'm also a one of CyberSecurity</p>  
   </div>  
-</section>  
-
+</section>
 <section id="Cyber-Edu-pt2">  
   <div>  
     <h1>Cyber Education 2</h1>  
@@ -216,8 +220,7 @@
     <p>Then I discovered that people made wifi maurauders with esp32 and esp8266 boards so I decided to make one by flashing the firmware to the board, during the process I learnt how to install, remove and update device drivers via device manager, then i tested it and guess what? It actually worked!</p>  
     <p>Then I heard of BackTrack Linux, It was the past of Kali Linux until it changed into Kali Linux in BackTrack 6, I like to call BackTrack Linux as <i>the prototype</i> of Kali Linux, I would've gotten BackTrack but it's outdated so I decided not to</p>  
   </div>  
-</section>  
-
+</section>
 <section id="A-Story">  
   <div>  
     <h1>A Story</h1>  
@@ -227,32 +230,22 @@
     <p>The remains of their mission was to make them understand that it wouldn't happen... <i>They swore to their last breath that they'd finish what they started/what's about to be done... They swore they would fix the past <b>AND THEY SWORE TILL' THEIR LAST BREATH!</b></i></p>  
     <p>Temporary end of the line - To be continued...</p>  
   </div>  
-</section>  
-
-<section id="Music-Credits">
-  <div>
+</section>
+<section id="footer-row">
+  <div class="footer-col" id="Music-Credits">
     <h1>Music Credits</h1>
     <p>Song: Jim Yosef - Link [NCS Release]</p>
     <p>Music provided by NoCopyrightSounds</p>
     <p>Free Download/Stream: http://ncs.io/Link</p>  
     <p>Watch: http://youtu.be/9iHM6X6uUH8</p>
   </div>
-
-<section id="Contact-Me">  
-  <div>  
-    <h1>Contact Me</h1>  
-    <p>If you'd like to communicate with me online, here's how you can reach me:</p>  
-    <b>Email:</b> ronthehero15@gmail.com / ronnietherockers@gmail.com<br>  
-    <b>Phone or Whatsapp:</b> +91-8857001510  
-    <p>Feel free to drop a message or a call!</p>  
-  </div>  
-</section>  
-
+  <div class="footer-col" id="Contact-Me">
+    <h1>Contact Me</h1>
+    <p>If you'd like to communicate with me online, here's how you can reach me:</p>
+    <b>Email:</b> ronthehero15@gmail.com / ronnietherockers@gmail.com<br>
+    <b>Phone or Whatsapp:</b> +91-8857001510
+    <p>Feel free to drop a message or a call!</p>
+  </div>
+</section>
 </body>
 </html>
-
-
-
-
-
-
