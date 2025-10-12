@@ -131,10 +131,18 @@
   <source src="Link.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-<button id="play-music-btn" onclick="playMusic()" style="position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#1aff00;color:#000;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;">
+<button 
+  id="play-music-btn"
+  onclick="playMusic()"
+  style="position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#1aff00;color:#000;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;"
+>
   ▶ Play Music
 </button>
-<button id="pause-music-btn" onclick="pauseMusic()" style="position:fixed;bottom:60px;right:20px;padding:10px 15px;background:#ff0000;color:#fff;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;display:none;">
+<button 
+  id="pause-music-btn"
+  onclick="pauseMusic()"
+  style="position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#ff0000;color:#fff;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;display:none;"
+>
   ❚❚ Pause Music
 </button>
 <script>
@@ -267,6 +275,7 @@ function pauseMusic() {
 </section>
 </body>
 </html>
+
 
 
 
