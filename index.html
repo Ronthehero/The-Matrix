@@ -1,264 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">  
-  <head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>The digital matrix</title>    
-    <style>  
-        body, html {  
-            margin: 0;  
-            padding: 0;  
-            width: 100%;  
-            height: 100%;  
-            overflow: hidden;  
-            font-family: cursive, sans-serif;  
-            color: #FFFFFF;  
-            scroll-behavior: smooth;  
-        }  
-        #video-background {  
-            position: fixed;  
-            right: 0;  
-            bottom: 0;          
-            min-width: 100%;  
-            min-height: 100%;  
-            z-index: -3;  
-        }  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>The digital matrix</title>    
+<style>  
+    body, html {  
+        margin: 0;  
+        padding: 0;  
+        width: 100%;  
+        height: 100%;  
+        overflow-y: auto;  
+        font-family: cursive, sans-serif;  
+        color: #FFFFFF;  
+        scroll-behavior: smooth;  
+    }  
+    #video-background {  
+        position: fixed;  
+        right: 0;  
+        bottom: 0;          
+        min-width: 100%;  
+        min-height: 100%;  
+        z-index: -3;  
+    }  
 
-        #overlay {  
-            position: fixed;  
-            top: 0;  
-            left: 0;  
-            width: 100%;  
-            height: 100%;  
-            background: rgba(0, 0, 0, 0.5);  
-            z-index: -2;  
-        }  
+    #overlay {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        background: rgba(0, 0, 0, 0.5);  
+        z-index: -2;  
+    }  
 
-        nav {  
-            position: fixed;  
-            top: 0;  
-            width: 100%;  
-            background: rgba(0, 0, 0, 0.510);  
-            padding: 10px 0;  
-            text-align: center;  
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.255);  
-            z-index: 1;  
-        }  
+    nav {  
+        position: fixed;  
+        top: 0;  
+        width: 100%;  
+        background: rgba(0, 0, 0, 0.510);  
+        padding: 10px 0;  
+        text-align: center;  
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.255);  
+        z-index: 1;  
+    }  
 
-        nav ul {  
-            list-style-type: none;  
-            margin: 0;  
-            padding: 0;  
-        }  
+    nav ul {  
+        list-style-type: none;  
+        margin: 0;  
+        padding: 0;  
+    }  
 
-        nav ul li {  
-            display: inline;  
-            margin: 0 20px;  
-        }  
+    nav ul li {  
+        display: inline;  
+        margin: 0 20px;  
+    }  
 
-        nav ul li a {  
-            color: #1aff00;  
-            text-decoration: none;  
-            font-size: 18px;  
-            transition: color 0.3s ease;  
-        }  
+    nav ul li a {  
+        color: #1aff00;  
+        text-decoration: none;  
+        font-size: 18px;  
+        transition: color 0.3s ease;  
+    }  
 
-        nav ul li a:hover {  
-            color: #ff0000;  
-        }  
+    nav ul li a:hover {  
+        color: #ff0000;  
+    }  
 
-        section {  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            text-align: center;  
-            padding: 50px 20px;  
-            position: relative;  
-            background: rgba(0, 0, 0, 0.5);  
-            margin: 0 auto;  
-            min-height: 100vh;  
-            width: 100%;  
-        }  
+    section {  
+        display: flex;  
+        justify-content: center;  
+        align-items: center;  
+        text-align: center;  
+        padding: 50px 20px;  
+        position: relative;  
+        background: rgba(0, 0, 0, 0.5);  
+        margin: 0 auto;  
+        min-height: 100vh;  
+        width: 100%;  
+    }  
 
-        section div {  
-            width: 75%;  
-            max-width: 800px;  
-            text-align: center;  
-            background: rgba(0, 0, 0, 0.7);  
-            padding: 20px;  
-            border-radius: 10px;  
-        }  
+    section div {  
+        width: 75%;  
+        max-width: 800px;  
+        text-align: center;  
+        background: rgba(0, 0, 0, 0.7);  
+        padding: 20px;  
+        border-radius: 10px;  
+    }  
 
-        #play-music-btn {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          padding: 10px 15px;
-          background-color: #1aff00;
-          color: black;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          z-index: 10;
-          font-weight: bold;
-          font-size: 16px;
-        }
-    </style>
-  </head>  
-  <body>  
-    <div id="video-wrapper">  
-      <iframe id="video-background" src="https://www.youtube.com/embed/2QVwEWIKMI8?autoplay=1&mute=1&loop=1&playlist=jPZEGEuBK1Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
-      <div id="overlay"></div>  
-    </div>  
+    #play-music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: #1aff00;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 10;
+      font-weight: bold;
+      font-size: 16px;
+    }
+</style>  
+</head>  
+<body>  
+<div id="video-wrapper">  
+  <iframe id="video-background" src="https://www.youtube.com/embed/2QVwEWIKMI8?autoplay=1&mute=1&loop=1&playlist=jPZEGEuBK1Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
+  <div id="overlay"></div>  
+</div>
 
-    <audio id="bg-music" loop style="display:none">
+<audio id="bg-music" loop style="display:none">
   <source src="Link.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-    
-    <button id="play-music-btn" onclick="document.getElementById('bg-music').play(); this.style.display='none';">
-      ▶ Play Music
-    </button>
 
-    <nav>  
-      <ul>  
-          <li><a href="#About-Me">About-Me</a></li>  
-          <li><a href="#My-Story">My-Story</a></li>  
-          <li><a href="#Experience">Experience</a></li>  
-          <li><a href="#Education">Education</a></li>  
-          <li><a href="#Coding-experience">Coding-Experience</a></li>  
-          <li><a href="#Cyber-Edu-pt1">Cyber-Edu-pt1</a></li>  
-          <li><a href="#Cyber-Edu-pt2">Cyber-Edu-pt2</a></li>  
-          <li><a href="#A-Story">A-Story</a></li>  
-          <li><a href="#Contact-Me">Contact-Me</a></li>  
-      </ul>  
-    </nav>  
-    
-    <section id="About-Me">  
-      <div>  
-          <h1>About Me</h1>  
-          <p>Rohan Vijayan, born on October 15, 2013, in Bangkok, is a remarkable young talent in the world of computing. His upbringing has been a multicultural journey, spanning Thailand, Singapore, and India, which has enriched his perspectives and experiences. Currently, Rohan is a student at The Bishop's School in Pune, where he continues to excel academically. Known as a computer prodigy, Rohan's aptitude for technology and programming has set him apart from his peers. His early exposure to diverse educational environments and cultures has undoubtedly contributed to his extraordinary abilities, making him a standout figure in the realm of young tech enthusiasts.</p>  
-      </div>  
-    </section>
+<button id="play-music-btn" onclick="document.getElementById('bg-music').play(); this.style.display='none';">
+  ▶ Play Music
+</button>
 
-         </div>  <nav>  
-      <ul>  
-          <li><a href="#About-Me">About-Me</a></li>  
-          <li><a href="#My-Story">My-Story</a></li>  
-          <li><a href="#Experience">Experience</a></li>  
-          <li><a href="#Education">Education</a></li>  
-          <li><a href="#Coding-experience">Coding-Experience</a></li>  
-          <li><a href="#Cyber-Edu-pt1">Cyber-Edu-pt1</a></li>  
-          <li><a href="#Cyber-Edu-pt2">Cyber-Edu-pt2</a></li>  
-          <li><a href="#A-Story">A-Story</a></li>  
-          <li><a href="#Contact-Me">Contact-Me</a></li>  
-      </ul>  
-  </nav>  
-    
-  <section id="About-Me">  
-    <div>  
-        <h1>About Me</h1>  
-        <p>Rohan Vijayan, born on October 15, 2013, in Bangkok, is a remarkable young talent in the world of computing. His upbringing has been a multicultural journey, spanning Thailand, Singapore, and India, which has enriched his perspectives and experiences. Currently, Rohan is a student at The Bishop's School in Pune, where he continues to excel academically. Known as a computer prodigy, Rohan's aptitude for technology and programming has set him apart from his peers. His early exposure to diverse educational environments and cultures has undoubtedly contributed to his extraordinary abilities, making him a standout figure in the realm of young tech enthusiasts.</p>  
-    </div>  
-  </section>  
+<nav>  
+  <ul>  
+      <li><a href="#About-Me">About-Me</a></li>  
+      <li><a href="#My-Story">My-Story</a></li>  
+      <li><a href="#Experience">Experience</a></li>  
+      <li><a href="#Education">Education</a></li>  
+      <li><a href="#Coding-experience">Coding-Experience</a></li>  
+      <li><a href="#Cyber-Edu-pt1">Cyber-Edu-pt1</a></li>  
+      <li><a href="#Cyber-Edu-pt2">Cyber-Edu-pt2</a></li>  
+      <li><a href="#A-Story">A-Story</a></li>  
+      <li><a href="#Contact-Me">Contact-Me</a></li>  
+  </ul>  
+</nav>  
 
-  <section id="My-Story">  
-      <div>  
-          <h1>The Story Of My Life</h1>  
-          <p>How it all started was...</p>  
-          <p>I was born on October 15, 2013. <b>Everything</b> was peaceful.</p>  
-          <p>I was born in Thailand (also known as Bangkok). Ever since I was in Bangkok, I've encountered video games. The first video game I played was Subway Surfers. The game was so much fun that I encountered more video games which I could not stop playing.</p>  
-          <p><i>A few years later</i>, I moved to India with my family.</p>  
-          <p>In India, I've played games like Dancing Line, Rolling Sky, UNO, Piano Tiles 2™, Plants vs Zombies, and more.</p>  
-          <p>Ever since I've played lots of games, they have made me feel inspired and determined to create games. So I asked my mom, "How do I code?" She then installed a coding practice app on my phone, and I was learning bit by bit. <i>After a few years...</i> I've finally learned Blockly, JavaScript, Python and HTML (well, not fully) (and I've started practicing coding since 2021).</p>  
-          <p>I spend some time with my friends and family, and I have fun with them.</p>  
-          <p>Sometimes I even code using W3Schools and Mimo. Usually, W3Schools feels a bit boring but it's one of my coding-pathways, on the other hand Mimo feels fun like a game. I will continue to learn many coding and scripting languages.</p>    
-      </div>  
-  </section>  
+<section id="About-Me">  
+  <div>  
+      <h1>About Me</h1>  
+      <p>Rohan Vijayan, born on October 15, 2013, in Bangkok, is a remarkable young talent in the world of computing. His upbringing has been a multicultural journey, spanning Thailand, Singapore, and India, which has enriched his perspectives and experiences. Currently, Rohan is a student at The Bishop's School in Pune, where he continues to excel academically. Known as a computer prodigy, Rohan's aptitude for technology and programming has set him apart from his peers. His early exposure to diverse educational environments and cultures has undoubtedly contributed to his extraordinary abilities, making him a standout figure in the realm of young tech enthusiasts.</p>  
+  </div>  
+</section>  
 
-  <section id="Experience">  
-      <div>  
-          <h1>Experience</h1>  
-          <p>Rohan Vijayan, an exceptional young mind born on October 15, 2013, has already established himself as a prodigy in the field of computer programming and technology. Growing up amidst the dynamic tech landscapes of Thailand, Singapore, and India, Rohan's passion for computing ignited at an early age. By the time he was six, he was already exploring basic coding concepts, and his insatiable curiosity soon led him to delve deeper into more complex programming languages like Python and JavaScript. His proficiency in these languages has enabled him to develop a variety of projects, ranging from simple games to more sophisticated applications that solve real-world problems.<br>  
-            
-            Rohan's journey is marked by numerous accolades and achievements. He has participated in various coding competitions, consistently ranking at the top and earning recognition for his innovative solutions and clear understanding of programming principles. His talent has not gone unnoticed; Rohan has been invited to tech workshops and hackathons, where he has had the opportunity to collaborate with and learn from seasoned professionals. These experiences have broadened his knowledge and skills, allowing him to stay abreast of the latest technological advancements.<br>  
-            
-            In addition to his technical prowess, Rohan is also an avid learner with a keen interest in the theoretical aspects of computer science. He spends considerable time studying algorithms, data structures, and the underlying mechanics of computer systems. This comprehensive approach to learning has given him a robust foundation, enabling him to tackle complex programming challenges with ease.<br>  
-            
-            Currently studying at The Bishop's School in Pune, Rohan continues to balance his academic responsibilities with his passion for technology. His school projects often reflect his deep understanding of computer science, earning him praise from teachers and peers alike. As he continues to grow and learn, Rohan Vijayan stands as a testament to the boundless possibilities that come with dedication and a love for technology.</p>  
-      </div>  
-  </section>  
+<section id="My-Story">  
+  <div>  
+      <h1>The Story Of My Life</h1>  
+      <p>How it all started was...</p>  
+      <p>I was born on October 15, 2013. <b>Everything</b> was peaceful.</p>  
+      <p>I was born in Thailand (also known as Bangkok). Ever since I was in Bangkok, I've encountered video games. The first video game I played was Subway Surfers. The game was so much fun that I encountered more video games which I could not stop playing.</p>  
+      <p><i>A few years later</i>, I moved to India with my family.</p>  
+      <p>In India, I've played games like Dancing Line, Rolling Sky, UNO, Piano Tiles 2™, Plants vs Zombies, and more.</p>  
+      <p>Ever since I've played lots of games, they have made me feel inspired and determined to create games. So I asked my mom, "How do I code?" She then installed a coding practice app on my phone, and I was learning bit by bit. <i>After a few years...</i> I've finally learned Blockly, JavaScript, Python and HTML (well, not fully) (and I've started practicing coding since 2021).</p>  
+      <p>I spend some time with my friends and family, and I have fun with them.</p>  
+      <p>Sometimes I even code using W3Schools and Mimo. Usually, W3Schools feels a bit boring but it's one of my coding-pathways, on the other hand Mimo feels fun like a game. I will continue to learn many coding and scripting languages.</p>    
+  </div>  
+</section>  
 
-  <section id="Education">  
-      <div>  
-          <h1>Education</h1>  
-          <p>Despite being young, I've managed to balance my studies with my passion for coding. Here's a snapshot of my educational background:</p>  
-             <b>Primary School:</b> Excelled in math and science, which fueled my interest in technology.<br>  
-             <b>Online Courses:</b> Completed various courses on coding platforms like W3Schools and Mimo.<br>   
-             <b>Self-Learning:</b> Spent countless hours learning and experimenting with new coding languages and technologies.<br>  
-      </div>  
-  </section>  
+<section id="Experience">  
+  <div>  
+      <h1>Experience</h1>  
+      <p>Rohan Vijayan, an exceptional young mind born on October 15, 2013, has already established himself as a prodigy in the field of computer programming and technology. Growing up amidst the dynamic tech landscapes of Thailand, Singapore, and India, Rohan's passion for computing ignited at an early age. By the time he was six, he was already exploring basic coding concepts, and his insatiable curiosity soon led him to delve deeper into more complex programming languages like Python and JavaScript. His proficiency in these languages has enabled him to develop a variety of projects, ranging from simple games to more sophisticated applications that solve real-world problems.<br>  
+          
+          Rohan's journey is marked by numerous accolades and achievements. He has participated in various coding competitions, consistently ranking at the top and earning recognition for his innovative solutions and clear understanding of programming principles. His talent has not gone unnoticed; Rohan has been invited to tech workshops and hackathons, where he has had the opportunity to collaborate with and learn from seasoned professionals. These experiences have broadened his knowledge and skills, allowing him to stay abreast of the latest technological advancements.<br>  
+          
+          In addition to his technical prowess, Rohan is also an avid learner with a keen interest in the theoretical aspects of computer science. He spends considerable time studying algorithms, data structures, and the underlying mechanics of computer systems. This comprehensive approach to learning has given him a robust foundation, enabling him to tackle complex programming challenges with ease.<br>  
+          
+          Currently studying at The Bishop's School in Pune, Rohan continues to balance his academic responsibilities with his passion for technology. His school projects often reflect his deep understanding of computer science, earning him praise from teachers and peers alike. As he continues to grow and learn, Rohan Vijayan stands as a testament to the boundless possibilities that come with dedication and a love for technology.</p>  
+  </div>  
+</section>  
 
-  <section id="Coding-experience">  
-      <div>  
-        <h1>Coding Experience</h1>  
-        <p>My coding journey began with simple block-based programming and has evolved into learning complex languages like JavaScript and Python. Here are some highlights:</p>  
-            <b>Blockly:</b> The starting point of my coding adventure. It helped me understand the basics of logic and structure.<br>   
-            <b>JavaScript:</b> I moved on to JavaScript to create interactive web applications and games.<br>  
-            <b>Python:</b> My current focus, which I use for both web development and data analysis.<br>  
-            <b>HTML:</b> And then i moved on to HTML for learning how to make websites for web development.<br>  
-            <b>CuriousJr:</b> The app that introduced me to coding, making learning fun and interactive.<br>  
-            <b>W3Schools:</b> The website that felt like an old school classic but taught me well.<br>  
-            <b>Coding With Mimo:</b> A new platform I enjoy using for learning new coding and scripting languages.  
-      </div>  
-  </section>  
+<section id="Education">  
+  <div>  
+      <h1>Education</h1>  
+      <p>Despite being young, I've managed to balance my studies with my passion for coding. Here's a snapshot of my educational background:</p>  
+         <b>Primary School:</b> Excelled in math and science, which fueled my interest in technology.<br>  
+         <b>Online Courses:</b> Completed various courses on coding platforms like W3Schools and Mimo.<br>   
+         <b>Self-Learning:</b> Spent countless hours learning and experimenting with new coding languages and technologies.<br>  
+  </div>  
+</section>  
 
-  <section id="Cyber-Edu-pt1">  
-      <div>  
-        <h1>Cyber Education 1</h1>  
-        <p>It all started back then when i was 5 or 6 or 7 where on yt i saw people hacking devices with just usbs that automatically run spripts when plugged in</p>  
-        <p>Then i saw that people were hacking with just smartphones and then I heard of Kali Linux... And then this cyber trip of time happened few days after i became 11 years old (I was in 5th std by that time)</p>  
-        <p>When it started... I installed a command-line-interface based on the Linux kernel, I figured out online how to use it and soonly after... <i>I installed so many cyber-tools</i></p>  
-        <p>I also figured out how to use the tools and what are their purposes, then I learnt cyber-attacks like for example : DDoS, DoS, probe, deauthentication, dictonary, password-list, dns poisoning, evil-twin, dns re-routing, hash decryption, BIOS infection, bruteforce, metasploit-framework, backdoor, phishing, MITM, arp poisoning, arp spoofing, WPA attacks and so many more!</p>  
-        <p>I also learnt cryptography, you may be wondering what is cryptography, cryptography is basically just encryption and decryption then I learnt port scanning, I used it for DDoS attacks back then</p>  
-        <p>Eventually... My parents fount out I became a hacker, my dad was impressed knowing this and then i got into schoolerships of cyber-courses then I learnt the different types of hackers : White hat hackers are ethical hackers that defend with security, and Black hat hackers are unethical hackers that dont defend anyone and hacks others and does cyber-attacks <b>and what did i become...?</b></p>  
-        <p><i>I became a Grey hat hacker - A hacker that decides to be ethical or unethical in certain cyber situation who's both good and bad, as i know... <u>these paths are inter-changeable</u></i></p>  
-        <p>Not to mention but I'm not just a hacker, I'm also a one of CyberSecurity</p>  
-      </div>  
-  </section>  
+<section id="Coding-experience">  
+  <div>  
+    <h1>Coding Experience</h1>  
+    <p>My coding journey began with simple block-based programming and has evolved into learning complex languages like JavaScript and Python. Here are some highlights:</p>  
+        <b>Blockly:</b> The starting point of my coding adventure. It helped me understand the basics of logic and structure.<br>   
+        <b>JavaScript:</b> I moved on to JavaScript to create interactive web applications and games.<br>  
+        <b>Python:</b> My current focus, which I use for both web development and data analysis.<br>  
+        <b>HTML:</b> And then i moved on to HTML for learning how to make websites for web development.<br>  
+        <b>CuriousJr:</b> The app that introduced me to coding, making learning fun and interactive.<br>  
+        <b>W3Schools:</b> The website that felt like an old school classic but taught me well.<br>  
+        <b>Coding With Mimo:</b> A new platform I enjoy using for learning new coding and scripting languages.  
+  </div>  
+</section>  
 
-  <section id="Cyber-Edu-pt2">  
-      <div>  
-        <h1>Cyber Education 2</h1>  
-        <p>Eventually... I got Kali Linux in a Virtual Machine but... <i>that wasn't the only linux distro for hacking...</i> There were other distros like BlackArch snd Parrot-OS, I also got Parrot-OS in a Virtual Machine, I plan on also getting BlackArch someday</p>  
-        <p>Then I learnt social engineering and network packet monitoring, Examples of packet monitoring : Wireshark and Stratoshark, Then I learnt Information gathering</p>  
-        <p>Then I learnt steganography, steganography is when there's a hidden message, for example : hidden messages in filenames, photos, videos and so on</p>  
-        <p>Then I discovered that people made wifi maurauders with esp32 and esp8266 boards so I decided to make one by flashing the firmware to the board, during the process I learnt how to install, remove and update device drivers via device manager, then i tested it and guess what? It actually worked!</p>  
-        <p>Then I heard of BackTrack Linux, It was the past of Kali Linux until it changed into Kali Linux in BackTrack 6, I like to call BackTrack Linux as <i>the prototype</i> of Kali Linux, I would've gotten BackTrack but it's outdated so I decided not to</p>  
-      </div>  
-  </section>  
+<section id="Cyber-Edu-pt1">  
+  <div>  
+    <h1>Cyber Education 1</h1>  
+    <p>It all started back then when i was 5 or 6 or 7 where on yt i saw people hacking devices with just usbs that automatically run spripts when plugged in</p>  
+    <p>Then i saw that people were hacking with just smartphones and then I heard of Kali Linux... And then this cyber trip of time happened few days after i became 11 years old (I was in 5th std by that time)</p>  
+    <p>When it started... I installed a command-line-interface based on the Linux kernel, I figured out online how to use it and soonly after... <i>I installed so many cyber-tools</i></p>  
+    <p>I also figured out how to use the tools and what are their purposes, then I learnt cyber-attacks like for example : DDoS, DoS, probe, deauthentication, dictonary, password-list, dns poisoning, evil-twin, dns re-routing, hash decryption, BIOS infection, bruteforce, metasploit-framework, backdoor, phishing, MITM, arp poisoning, arp spoofing, WPA attacks and so many more!</p>  
+    <p>I also learnt cryptography, you may be wondering what is cryptography, cryptography is basically just encryption and decryption then I learnt port scanning, I used it for DDoS attacks back then</p>  
+    <p>Eventually... My parents fount out I became a hacker, my dad was impressed knowing this and then i got into schoolerships of cyber-courses then I learnt the different types of hackers : White hat hackers are ethical hackers that defend with security, and Black hat hackers are unethical hackers that dont defend anyone and hacks others and does cyber-attacks <b>and what did i become...?</b></p>  
+    <p><i>I became a Grey hat hacker - A hacker that decides to be ethical or unethical in certain cyber situation who's both good and bad, as i know... <u>these paths are inter-changeable</u></i></p>  
+    <p>Not to mention but I'm not just a hacker, I'm also a one of CyberSecurity</p>  
+  </div>  
+</section>  
 
-  <section id="A-Story">  
-      <div>  
-        <h1>A Story</h1>  
-        <p>Once upon a time... there were 2 people, one was like a friend to the other... Until one day... <i>A digital havoc ignited in the matrix</i></p>  
-        <p>Peace has been disrupted in the matrix.... after that, legends claimed that the ignition were to happen, once again, <i>but this time...</i></p>  
-        <p><b>Something unexpected happened,</b> peace has returned to the matrix and they apologized for the past ignition but... <b><u>their mission wasn't done there just yet</u> as few legends still claimed that it would still ignite</b>, They were on a mission to fix the past but it was only fixed by 75% instead of 100%...</p>  
-        <p>The remains of their mission was to make them understand that it wouldn't happen... <i>They swore to their last breath that they'd finish what they started/what's about to be done... They swore they would fix the past <b>AND THEY SWORE TILL' THEIR LAST BREATH!</b></i></p>  
-        <p>Temporary end of the line - To be continued...</i></p>  
-      </div>  
-  </section>  
+<section id="Cyber-Edu-pt2">  
+  <div>  
+    <h1>Cyber Education 2</h1>  
+    <p>Eventually... I got Kali Linux in a Virtual Machine but... <i>that wasn't the only linux distro for hacking...</i> There were other distros like BlackArch snd Parrot-OS, I also got Parrot-OS in a Virtual Machine, I plan on also getting BlackArch someday</p>  
+    <p>Then I learnt social engineering and network packet monitoring, Examples of packet monitoring : Wireshark and Stratoshark, Then I learnt Information gathering</p>  
+    <p>Then I learnt steganography, steganography is when there's a hidden message, for example : hidden messages in filenames, photos, videos and so on</p>  
+    <p>Then I discovered that people made wifi maurauders with esp32 and esp8266 boards so I decided to make one by flashing the firmware to the board, during the process I learnt how to install, remove and update device drivers via device manager, then i tested it and guess what? It actually worked!</p>  
+    <p>Then I heard of BackTrack Linux, It was the past of Kali Linux until it changed into Kali Linux in BackTrack 6, I like to call BackTrack Linux as <i>the prototype</i> of Kali Linux, I would've gotten BackTrack but it's outdated so I decided not to</p>  
+  </div>  
+</section>  
 
-  <section id="Contact-Me">  
-      <div>  
-        <h1>Contact Me</h1>  
-        <p>If you'd like to communicate with me online, here's how you can reach me:</p>  
-            <b>Email:</b> ronthehero15@gmail.com / ronnietherockers@gmail.com<br>  
-            <b>Phone or Whatsapp:</b> +91-8857001510  
-        <p>Feel free to drop a message or a call!</p>  
-    </div>
+<section id="A-Story">  
+  <div>  
+    <h1>A Story</h1>  
+    <p>Once upon a time... there were 2 people, one was like a friend to the other... Until one day... <i>A digital havoc ignited in the matrix</i></p>  
+    <p>Peace has been disrupted in the matrix.... after that, legends claimed that the ignition were to happen, once again, <i>but this time...</i></p>  
+    <p><b>Something unexpected happened,</b> peace has returned to the matrix and they apologized for the past ignition but... <b><u>their mission wasn't done there just yet</u> as few legends still claimed that it would still ignite</b>, They were on a mission to fix the past but it was only fixed by 75% instead of 100%...</p>  
+    <p>The remains of their mission was to make them understand that it wouldn't happen... <i>They swore to their last breath that they'd finish what they started/what's about to be done... They swore they would fix the past <b>AND THEY SWORE TILL' THEIR LAST BREATH!</b></i></p>  
+    <p>Temporary end of the line - To be continued...</p>  
+  </div>  
+</section>  
 
-  </body>
+<section id="Contact-Me">  
+  <div>  
+    <h1>Contact Me</h1>  
+    <p>If you'd like to communicate with me online, here's how you can reach me:</p>  
+    <b>Email:</b> ronthehero15@gmail.com / ronnietherockers@gmail.com<br>  
+    <b>Phone or Whatsapp:</b> +91-8857001510  
+    <p>Feel free to drop a message or a call!</p>  
+  </div>  
+</section>  
+
+</body>
 </html>
-
-
