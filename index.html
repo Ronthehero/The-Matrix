@@ -258,7 +258,7 @@ function pauseMusic() {
     <button id="disable-onscreen-btn"
       style="position:fixed;bottom:20px;left:20px;z-index:10;padding:10px 12px;font-size:15px;background:#ffff00;color:#000;border:none;border-radius:5px;cursor:pointer;display:none;">
       Disable On-Screen Buttons</button>
-    <div id="tetris-onscreen-controls" style="position:fixed;bottom:65px;left:20px;z-index:9;display:none;flex-direction:column;">
+    <div id="tetris-onscreen-controls"style="position:fixed;bottom:65px;left:20px;z-index:9;display:none;flex-direction:column;background:rgba(30,30,30,0.80);border-radius:12px;padding:6px 4px;box-shadow:0 4px 16px rgba(0,0,0,0.44);">
       <div style="display:flex;">
         <button onclick="tetrisControl('left')" style="width:48px;height:48px;margin:1px;">⬅️</button>
         <button onclick="tetrisControl('down')" style="width:48px;height:48px;margin:1px;">⬇️</button>
@@ -552,5 +552,6 @@ update();
 </script>
 </body>
 </html>
+
 
 
