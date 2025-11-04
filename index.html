@@ -329,6 +329,13 @@ arnt Information gathering</p>
   </div>
 </section>
 <script>
+window.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('tetris-onscreen-controls').style.display = 'none';
+  document.getElementById('disable-onscreen-btn').style.display = 'none';
+  document.getElementById('enable-onscreen-btn').style.display = 'inline-block';
+});
+
+
 function playMusic() {
   var music = document.getElementById("bg-music");
   music.play();
@@ -605,6 +612,7 @@ window.addEventListener('hashchange', function() {
 </script>
 </body>
 </html>
+
 
 
 
