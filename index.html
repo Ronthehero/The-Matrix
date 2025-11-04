@@ -106,15 +106,43 @@
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* So it doesn't stretch! */
 }
-#tetris-onscreen-controls button {
-  background: transparent !important;
+/* For the button row */
+#tetris-onscreen-controls > div {
+  display: flex !important;
+  gap: 4px !important;
+  background: none !important;
   border: none !important;
   box-shadow: none !important;
-  color: #fff; /* or another color for icon/label contrast */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+/* For all control buttons */
+#tetris-onscreen-controls button {
+  background: #222 !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 6px !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 23px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 #tetris-onscreen-controls button:active {
-  background: #333 !important; /* slight feedback for tapping */
+  background: #444 !important;
+}
+#tetris-onscreen-controls button[onclick*="rotate"] {
+  width: 153px !important;
+  height: 48px !important;
 }
 </style>  
 </head>  
@@ -568,6 +596,7 @@ update();
 </script>
 </body>
 </html>
+
 
 
 
