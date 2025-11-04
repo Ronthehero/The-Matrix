@@ -101,6 +101,21 @@
   -ms-user-select: none;     /* IE10+/Edge */
   user-select: none;         /* Standard */
     }
+    #tetris-onscreen-controls {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+#tetris-onscreen-controls button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff; /* or another color for icon/label contrast */
+}
+#tetris-onscreen-controls button:active {
+  background: #333 !important; /* slight feedback for tapping */
+}
 </style>  
 </head>  
 <body>  
@@ -553,6 +568,7 @@ update();
 </script>
 </body>
 </html>
+
 
 
 
