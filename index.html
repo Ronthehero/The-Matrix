@@ -590,12 +590,23 @@ function tetrisControl(action) {
   draw();
 }
 
-playerReset();
-updateScore();
-update();
+let tetrisStarted = false;
+function startTetris() {
+    if (!tetrisStarted) {
+        tetrisStarted = true;
+        playerReset();
+        updateScore();
+        update();
+    }
+}
+
+window.addEventListener('hashchange', function() {
+  if (window.location.hash === "#Tetris") startTetris();
+});
 </script>
 </body>
 </html>
+
 
 
 
