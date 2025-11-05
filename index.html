@@ -112,23 +112,31 @@ body, * {
   user-select: none;
 }
 
-/* ============================= */
-/* TETRIS ON-SCREEN CONTROLS FIX */
-/* ============================= */
 #tetris-onscreen-controls {
   position: fixed;
   bottom: 65px;
   left: 20px;
-  z-index: 9;
+  z-index: 9999; /* override everything */
   display: none;
   flex-direction: column;
   align-items: flex-start;
+
+  /* --- isolate from all parents --- */
   background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+
+  /* --- block browser ghost shading --- */
+  contain: layout paint style;
+  will-change: transform;
+  transform: translateZ(0);
+  isolation: isolate;
+
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  backdrop-filter: none !important;
   outline: none !important;
 }
 
