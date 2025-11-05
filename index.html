@@ -100,15 +100,20 @@
   -ms-user-select: none;     /* IE10+/Edge */
   user-select: none;         /* Standard */
     }
-    #tetris-onscreen-controls {
+#tetris-onscreen-controls {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  display: flex !important;
+  display: none;  */
   flex-direction: column !important;
-  align-items: flex-start !important; /* So it doesn't stretch! */
+  align-items: flex-start !important;
+}
+
+#tetris-onscreen-controls.show {
+  display: flex !important; /* shown dynamically */
+}
 }
 /* For the button row */
 #tetris-onscreen-controls > div {
