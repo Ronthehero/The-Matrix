@@ -184,8 +184,7 @@ body, * {
   <source src="Digital-Matrix.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-<audio id="bg-music" loop style="display:none">
-  <source src="Link.mp3" type="audio/mp3">
+<audio id="bg-music" loop style="display:none">
   Your browser does not support the audio element.
 </audio>
 <button 
@@ -202,6 +201,14 @@ body, * {
 >
   ❚❚ Pause Music
 </button>
+<select id="music-select" style="position:fixed;bottom:60px;right:20px;z-index:13;padding:7px 10px;font-size:15px;background:#222;color:#1aff00;border-radius:5px;border:none;">
+  <option value="Link.mp3">Jim Yosef - Link</option>
+  <option value="12am.mp3">12am</option>
+  <option value="A-DARK-ZONE.MP3">A-DARK-ZONE</option>
+  <option value="Its-TV-Time.mp3">Its-TV-Time</option>
+  <option value="Raise-Up-Your-Bat.mp3">Raise-Up-Your-Bat</option>
+  <option value="??????.mp3">??????</option>
+</select>
 <nav>  
   <ul>  
       <li><a href="#About-Me">About-Me</a></li>  
@@ -373,16 +380,29 @@ window.addEventListener('DOMContentLoaded', function() {
 
 function playMusic() {
   var music = document.getElementById("bg-music");
+  var select = document.getElementById("music-select");
+  // Always point to the selected track (add path if needed)
+  music.src = select.value;
   music.play();
   document.getElementById("play-music-btn").style.display = "none";
   document.getElementById("pause-music-btn").style.display = "block";
 }
+
 function pauseMusic() {
   var music = document.getElementById("bg-music");
   music.pause();
   document.getElementById("pause-music-btn").style.display = "none";
   document.getElementById("play-music-btn").style.display = "block";
 }
+
+// Optional: Switch tracks instantly if already playing
+document.getElementById("music-select").onchange = function() {
+  var music = document.getElementById("bg-music");
+  if (!music.paused) {
+    music.src = this.value;
+    music.play();
+  }
+};
 
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
