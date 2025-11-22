@@ -2,13 +2,9 @@ window.addEventListener('DOMContentLoaded', function() {
   const controls = document.getElementById('tetris-onscreen-controls');
   const enableBtn = document.getElementById('enable-onscreen-btn');
   const disableBtn = document.getElementById('disable-onscreen-btn');
-
-  // hide controls & disable button by default
   controls.classList.remove('show');
   disableBtn.style.display = 'none';
   enableBtn.style.display = 'inline-block';
-
-  // toggle logic using CSS class
   enableBtn.onclick = function() {
     controls.classList.add('show');
     enableBtn.style.display = 'none';
@@ -19,12 +15,28 @@ window.addEventListener('DOMContentLoaded', function() {
     disableBtn.style.display = 'none';
     enableBtn.style.display = 'inline-block';
   };
+  resizeMusicSelect();
+  document.getElementById("music-select").addEventListener("change", function() {
+    resizeMusicSelect();
+    var music = document.getElementById("bg-music");
+    if (!music.paused) {
+      music.src = this.value;
+      music.play();
+    }
+  });
 });
+
+function resizeMusicSelect() {
+  var select = document.getElementById("music-select");
+  var mirror = document.getElementById("music-width-mirror");
+  var selectedText = select.options[select.selectedIndex].text;
+  mirror.textContent = selectedText;
+  select.style.width = (mirror.offsetWidth + 32) + "px";
+}
 
 function playMusic() {
   var music = document.getElementById("bg-music");
   var select = document.getElementById("music-select");
-  // Always point to the selected track (add path if needed)
   music.src = select.value;
   music.play();
   document.getElementById("play-music-btn").style.display = "none";
@@ -37,15 +49,6 @@ function pauseMusic() {
   document.getElementById("pause-music-btn").style.display = "none";
   document.getElementById("play-music-btn").style.display = "block";
 }
-
-// Optional: Switch tracks instantly if already playing
-document.getElementById("music-select").onchange = function() {
-  var music = document.getElementById("bg-music");
-  if (!music.paused) {
-    music.src = this.value;
-    music.play();
-  }
-};
 
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
@@ -81,6 +84,7 @@ const patterns = [
 ];
 
 let score = 0;
+let dropInterval = 600;
 let arena = createMatrix(12, 20);
 let player = { pos: {x: 0, y: 0}, matrix: null, score: 0 };
 
@@ -161,6 +165,7 @@ function playerReset(){
   if (collide(arena, player)){
     arena = createMatrix(12, 20);
     score = 0;
+    dropInterval = 600;
     updateScore();
   }
 }
@@ -175,6 +180,7 @@ function arenaSweep(){
     arena.unshift(row);
     score += rowCount * 10;
     rowCount *= 2;
+    dropInterval = Math.max(50, dropInterval - 0.5 * dropInterval);
   }
 }
 
@@ -198,7 +204,6 @@ function playerRotate(){
 }
 
 let dropCounter = 0;
-let dropInterval = 600;
 let lastTime = 0;
 function update(time = 0){
   const deltaTime = time - lastTime;
@@ -237,7 +242,6 @@ function startTetris() {
     update();
   }
 }
-
 window.addEventListener('hashchange', () => {
   if (window.location.hash === "#Tetris") startTetris();
 });
