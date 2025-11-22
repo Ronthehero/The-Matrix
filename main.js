@@ -38,7 +38,10 @@ function resizeMusicSelect() {
 function playMusic() {
   var music = document.getElementById("bg-music");
   var select = document.getElementById("music-select");
-  music.src = select.value;
+  if (!music.src.includes(select.value)) {
+    music.src = select.value;
+    music.currentTime = 0;
+  }
   music.play();
   document.getElementById("play-music-btn").style.display = "none";
   document.getElementById("pause-music-btn").style.display = "block";
