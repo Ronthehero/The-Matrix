@@ -190,7 +190,7 @@ function arenaSweep(){
     arena.unshift(row);
     score += rowCount * 10;
     rowCount *= 2;
-    dropInterval = Math.max(50, dropInterval - 0.5 * dropInterval);
+    dropInterval = Math.max(50, dropInterval - 0.1 * dropInterval);
     updateSpeedDisplay();
   }
 }
