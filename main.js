@@ -200,7 +200,7 @@ function arenaSweep(){
     anyRowCleared = true;
   }
   if (anyRowCleared) {
-    dropInterval = Math.max(50, dropInterval - 0.2 * dropInterval); // Change 0.2 as you wish
+    dropInterval = Math.max(50, dropInterval - 0.01 * dropInterval);
     updateSpeedDisplay();
   }
 }
