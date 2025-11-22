@@ -32,7 +32,7 @@ function resizeMusicSelect() {
   var selectedText = select.options[select.selectedIndex].text;
   mirror.textContent = selectedText;
   select.style.width = "auto";
-  select.style.width = (mirror.offsetWidth + 72) + "px";
+  select.style.width = (mirror.offsetWidth + 52) + "px";
 }
 
 function playMusic() {
