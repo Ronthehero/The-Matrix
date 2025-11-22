@@ -224,6 +224,7 @@ document.addEventListener('keydown', e => {
 
 function updateScore(){
   document.getElementById('score').innerText = score;
+  document.getElementById('tetris-speed').innerText = dropInterval;
 }
 
 function tetrisControl(action) {
