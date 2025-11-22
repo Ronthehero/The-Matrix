@@ -35,18 +35,20 @@ function resizeMusicSelect() {
   select.style.width = (mirror.offsetWidth + 52) + "px";
 }
 
+let currentTrack = null;
+
 function playMusic() {
   var music = document.getElementById("bg-music");
   var select = document.getElementById("music-select");
-  if (!music.src.includes(select.value)) {
+  if (currentTrack !== select.value) {
     music.src = select.value;
     music.currentTime = 0;
+    currentTrack = select.value;
   }
   music.play();
   document.getElementById("play-music-btn").style.display = "none";
   document.getElementById("pause-music-btn").style.display = "block";
 }
-
 
 function pauseMusic() {
   var music = document.getElementById("bg-music");
