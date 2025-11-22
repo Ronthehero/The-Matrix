@@ -182,6 +182,7 @@ function playerReset(){
 
 function arenaSweep(){
   let rowCount = 1;
+  let anyRowCleared = false;
   outer: for (let y = arena.length - 1; y >= 0; --y){
     for (let x = 0; x < arena[y].length; ++x){
       if (arena[y][x] === 0) continue outer;
@@ -190,7 +191,10 @@ function arenaSweep(){
     arena.unshift(row);
     score += rowCount * 10;
     rowCount *= 2;
-    dropInterval = Math.max(50, dropInterval - 0.1 * dropInterval);
+    anyRowCleared = true;
+  }
+  if (anyRowCleared) {
+    dropInterval = Math.max(50, dropInterval - 0.2 * dropInterval); // Change 0.2 as you wish
     updateSpeedDisplay();
   }
 }
