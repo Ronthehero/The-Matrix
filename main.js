@@ -47,6 +47,7 @@ function playMusic() {
   document.getElementById("pause-music-btn").style.display = "block";
 }
 
+
 function pauseMusic() {
   var music = document.getElementById("bg-music");
   music.pause();
