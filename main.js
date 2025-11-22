@@ -31,6 +31,7 @@ function resizeMusicSelect() {
   var mirror = document.getElementById("music-width-mirror");
   var selectedText = select.options[select.selectedIndex].text;
   mirror.textContent = selectedText;
+  select.style.width = "auto";
   select.style.width = (mirror.offsetWidth + 32) + "px";
 }
 
