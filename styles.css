@@ -9,6 +9,45 @@ body, html {
   scroll-behavior: smooth;
 }
 
+/* MATRIX SCROLLBARS - Native behavior, custom Matrix look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.9);
+  border-radius: 5px;
+  backdrop-filter: blur(8px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1aff00, #00ff88);
+  border-radius: 5px;
+  border: 2px solid rgba(10, 10, 10, 1);
+  box-shadow: 0 0 10px rgba(26, 255, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00ff88, #1aff00);
+  box-shadow: 0 0 20px rgba(26, 255, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #1aff00;
+  box-shadow: 0 0 25px rgba(26, 255, 0, 1);
+}
+
+/* Firefox scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1aff00 rgba(10, 10, 10, 0.9);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 #video-background {
   position: fixed;
   right: 0;
@@ -61,6 +100,7 @@ nav ul li a:hover {
   color: #ff0000;
 }
 
+/* Scrollable sections with automatic scrollbars */
 section {
   display: flex;
   justify-content: center;
@@ -70,8 +110,10 @@ section {
   position: relative;
   background: rgba(0, 0, 0, 0.5);
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh; /* Changed from min-height */
   width: 100%;
+  overflow-y: auto; /* Enable vertical scroll */
+  scroll-snap-align: start;
 }
 
 section div {
@@ -81,6 +123,8 @@ section div {
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
+  max-height: 85vh; /* Limit content height */
+  overflow-y: auto; /* Scroll inside content box */
 }
 
 #play-music-btn {
@@ -98,13 +142,7 @@ section div {
   font-size: 16px;
 }
 
-body, * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
+/* Tetris controls (unchanged) */
 #tetris-onscreen-controls {
   position: fixed;
   bottom: 65px;
