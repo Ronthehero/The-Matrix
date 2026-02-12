@@ -205,3 +205,8 @@ section div {
   width: 170px !important;
   height: 56px !important;
 }
+
+section:not(#Tetris) div { 
+  max-height: 350px; 
+  overflow-y: auto; 
+}
