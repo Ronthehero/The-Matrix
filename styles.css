@@ -98,7 +98,6 @@ nav ul li a:hover {
   color: #ff0000;
 }
 
-/* Scrollable sections with automatic scrollbars */
 section {
   display: flex;
   justify-content: center;
@@ -108,9 +107,9 @@ section {
   position: relative;
   background: rgba(0, 0, 0, 0.5);
   margin: 0 auto;
-  height: 100vh; /* Changed from min-height */
+  height: 100vh;
   width: 100%;
-  overflow-y: auto; /* Enable vertical scroll */
+  overflow-y: auto;
   scroll-snap-align: start;
 }
 
@@ -121,8 +120,8 @@ section div {
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
-  max-height: 85vh; /* Limit content height */
-  overflow-y: auto; /* Scroll inside content box */
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 #play-music-btn {
@@ -140,7 +139,6 @@ section div {
   font-size: 16px;
 }
 
-/* Tetris controls (unchanged) */
 #tetris-onscreen-controls {
   position: fixed;
   bottom: 65px;
