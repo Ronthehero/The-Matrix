@@ -124,10 +124,6 @@ section:not(#Tetris) div {
   overflow-y: auto;
 }
 
-#Tetris canvas {
-  background: rgba(0, 0, 0, 0.3) !important;
-}
-
 #play-music-btn {
   position: fixed;
   bottom: 20px;
