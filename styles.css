@@ -125,7 +125,11 @@ section:not(#Tetris) div {
 }
 
 #Tetris {
-  background: rgba(0, 0, 0, 0.7) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+#Tetris canvas {
+  background: transparent !important;
 }
 
 #play-music-btn {
