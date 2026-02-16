@@ -124,13 +124,8 @@ section:not(#Tetris) div {
   overflow-y: auto;
 }
 
-#Tetris {
-  background: rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(2px);
-}
-
 #Tetris canvas {
-  opacity: 0.85 !important;
+  background: rgba(0, 0, 0, 0.3) !important;
 }
 
 #play-music-btn {
