@@ -124,17 +124,6 @@ section:not(#Tetris) div {
   overflow-y: auto;
 }
 
-#Tetris {
-  width: 75%;
-  max-width: 300px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 10px;
-  max-height: 244px;
-  overflow-y: auto;
-}
-
 #play-music-btn {
   position: fixed;
   bottom: 20px;
