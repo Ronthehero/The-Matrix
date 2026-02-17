@@ -125,11 +125,13 @@ section:not(#Tetris) div {
 }
 
 #Tetris {
-width: 75%;
+  width: 75%;
+  max-width: 800px;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
+  max-height: 85vh;
   overflow-y: auto;
 }
 
