@@ -1,3 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>  
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable="no">
+<title>Tetris</title>    
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tetris.css">
+</head>  
+<body>  
+<video autoplay muted loop playsinline id="bg-video"
+    style="position:fixed; top:0; left:0; min-width:100vw; min-height:100vh; object-fit:cover; z-index:-1;">
+  <source src="Digital-Matrix.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<audio id="bg-music" loop style="display:none">
+  Your browser does not support the audio element.
+</audio>
+<button 
+  id="play-music-btn"
+  onclick="playMusic()"
+  style="position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#1aff00;color:#000;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;"
+>
+  ▶ Play Music
+</button>
+<button 
+  id="pause-music-btn"
+  onclick="pauseMusic()"
+  style="position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#ff0000;color:#fff;border:none;border-radius:5px;cursor:pointer;z-index:10;font-weight:bold;font-size:16px;display:none;"
+>
+  ❚❚ Pause Music
+</button>
+<select id="music-select" style="position:fixed;bottom:60px;right:20px;z-index:13;padding:7px 10px;font-size:15px;background:#222;color:#1aff00;border-radius:5px;border:none;">
+  <option value="Highscore.mp3">Highscore</option>
+  <option value="Lost-in-Sound.mp3">Lost in Sound</option>
+  <option value="Never-Be-Alone.mp3">Never Be Alone</option>
+  <option value="Dr.-Gaster.mp3">Dr. Gaster</option>
+  <option value="Link.mp3">Link</option>
+  <option value="Sky-High.mp3">Sky High</option>
+  <option value="Sky-High-pt.-II.mp3">Sky High pt.II</option>
+  <option value="Symbolism.mp3">Symbolism</option>
+  <option value="Dreams.mp3">Dreams</option>
+  <option value="Fearless.mp3">Fearless</option>
+  <option value="Force.mp3">Force</option>
+  <option value="Fearless-pt.-II.mp3">Fearless pt. II</option>
+  <option value="Invisible.mp3">Invisible</option>
+  <option value="Invincible.mp3">Invincible</option>
+  <option vslue="Where-We-Started.mp3">Where We Started</option>
+  <option value="Battle-Against-A-True-Hero.mp3">Battle Against A True Hero</option>
+  <option value="12am.mp3">12am</option>
+  <option value="Creative-Freedom.mp3">Creative Freedom</option>
+  <option value="A-DARK-ZONE.mp3">A DARK ZONE</option>
+  <option value="TV-World.mp3">TV World</option>
+  <option value="Glowing-Snow.mp3">Glowing Snow</option>
+  <option value="Its-TV-Time.mp3">It's TV Time!</option>
+  <option value="Raise-Up-Your-Bat.mp3">Raise Up Your Bat</option>
+  <option value="THE-WORLD-REVOLVING.mp3">THE WORLD REVOLVING</option>
+  <option value="Chaos-King.mp3">Chaos King</option>
+  <option value="Black-Knife.mp3">Black Knife</option>
+  <option value="Dialtone.mp3">Dialtone</option>
+  <option value="Hammer-of-Justice.mp3">Hammer of Justice</option>
+  <option value="Think-Different.mp3">Think Different</option>
+  <option value="Dragonfly.mp3">Dragonfly</option>
+  <option value="Born-Survivor.mp3">Born Survivor</option>
+  <option value="Granite.mp3">Granite</option>
+  <option value="Spider-Dance.mp3">Spider Dance</option>
+  <option value="Final-Boss.mp3">Final Boss</option>
+  <option value="Till-Its-Over.mp3">Till Its Over</option>
+  <option value="Grape-Soda.mp3">Grape Soda</option>
+  <option value="Hell-Finds-You-Everywhere.mp3">Hell Finds You Everywhere</option>
+  <option value="Scoring-The-End-Of-The-World.mp3">Scoring The End of The World</option>
+  <option value="Cause-of-Death.mp3">Cause of Death</option>
+  <option value="Black-Catcher.mp3">Black Catcher</option>
+  <option value="Unravel.mp3">Unravel</option>
+  <option value="Kizuna-No-Kiseki.mp3">Kizuna No Kiseki</>
+  <option value="Usseewa.mp3">Usseewa</option>
+  <option value="Usseewa-(Giga-Remix).mp3">Usseewa (Giga Remix)</option>
+  <option value="secret_audio.mp3">secret_audio.mp3</option>
+</select>
+
+<span id="music-width-mirror"
+  style="position:absolute;visibility:hidden;white-space:pre;font-size:15px;font-family:inherit;"></span>
+
 <section id="Tetris">
   <div>
     <h1><font color="lime">Play Tetris</font></h1>
