@@ -113,7 +113,7 @@ section {
   scroll-snap-align: start;
 }
 
-section:not(#Tetris) div {
+section div {
   width: 75%;
   max-width: 800px;
   text-align: center;
