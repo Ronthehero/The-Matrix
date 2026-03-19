@@ -100,6 +100,32 @@ section div {
   border-radius: 10px;
 }
 
+#enable-onscreen-btn,
+#disable-onscreen-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background-color: #0a0a0a;
+  color: #1aff00;
+  border: 1px solid #1aff00;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(26, 255, 0, 0.3);
+  transition: all 0.15s ease-in-out;
+}
+
+#enable-onscreen-btn:active,
+#disable-onscreen-btn:active {
+  background-color: #1aff00;
+  color: #000;
+  box-shadow: 0 0 15px rgba(26, 255, 0, 0.5);
+  transform: scale(0.95);
+}
+
 #play-music-btn {
   position: fixed;
   bottom: 20px;
