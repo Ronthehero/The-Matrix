@@ -124,17 +124,6 @@ section div {
   overflow-y: auto;
 }
 
-#Tetris canvas {
-  width: 75%;
-  max-width: 800px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 10px;
-  max-height: 244px;
-  overflow-y: auto;
-}
-
 #play-music-btn {
   position: fixed;
   bottom: 20px;
@@ -148,69 +137,4 @@ section div {
   z-index: 10;
   font-weight: bold;
   font-size: 16px;
-}
-
-#tetris-onscreen-controls {
-  position: fixed;
-  bottom: 65px;
-  left: 20px;
-  z-index: 9999;
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  mix-blend-mode: normal !important;
-  contain: layout paint style;
-  will-change: transform;
-  transform: translateZ(0);
-  isolation: isolate;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  outline: none !important;
-}
-
-#tetris-onscreen-controls.show {
-  display: flex !important;
-}
-
-#tetris-onscreen-controls > div {
-  display: flex !important;
-  gap: 4px !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-#tetris-onscreen-controls button {
-  background: #0a0a0a !important;
-  color: #1aff00 !important;
-  border: 1px solid #1aff00 !important;
-  border-radius: 10px !important;
-  width: 56px !important;
-  height: 56px !important;
-  font-size: 22px !important;
-  font-weight: bold !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 0 10px rgba(26, 255, 0, 0.3) !important;
-  transition: all 0.15s ease-in-out;
-}
-
-#tetris-onscreen-controls button:active {
-  background: #1aff00 !important;
-  color: #000 !important;
-  box-shadow: 0 0 15px rgba(26, 255, 0, 0.5) !important;
-  transform: scale(0.95);
-}
-
-#tetris-onscreen-controls button[onclick*="rotate"] {
-  width: 170px !important;
-  height: 56px !important;
 }
