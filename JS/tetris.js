@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', function() {
     disableBtn.style.display = 'none';
     enableBtn.style.display = 'inline-block';
   };
+  startTetris();
 });
 
 const canvas = document.getElementById('tetris');
@@ -117,7 +118,7 @@ function draw() {
   ctx.fillStyle = "#111";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   drawMatrix(arena, {x: 0, y: 0});
-  drawMatrix(player.matrix, player.pos);
+  if (player.matrix) drawMatrix(player.matrix, player.pos);
 }
 
 function playerDrop() {
@@ -237,13 +238,5 @@ function startTetris() {
     update();
   }
 }
-
-window.addEventListener('hashchange', () => {
-  if (window.location.pathname === '/Web-Games/tetris.html') {
-    startTetris();
-  } else {
-    stopTetris();
-  }
-});
 
 draw();
