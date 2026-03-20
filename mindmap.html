@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link id="favicon" rel="icon" type="image/png" href="/favicons/favicon-on.png">
+<script>
+  const _fav = document.getElementById("favicon");
+  const _frames = ["/favicons/favicon-on.png", "/favicons/favicon-off.png"];
+  let _fi = 0;
+  setInterval(() => { _fi = (_fi + 1) % 2; _fav.href = _frames[_fi]; }, 530);
+</script>
 <title>The Matrix — Mind Map</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
