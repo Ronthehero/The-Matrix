@@ -7,6 +7,7 @@ body, html {
   font-family: "Comic Neue", "Comic Sans MS", cursive, sans-serif;
   color: #FFFFFF;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -211,39 +212,46 @@ section div {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    overflow-x: hidden;
   }
 
   section div {
     width: 100%;
     max-width: 100%;
     max-height: 65vh;
-    padding: 14px;
+    padding: 14px 18px 14px 14px;
     font-size: 13px;
     line-height: 1.7;
     text-align: center;
     overflow-y: scroll;
+    overflow-x: hidden;
     box-sizing: border-box;
-    /* Force visible Matrix scrollbar on mobile */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     -webkit-overflow-scrolling: touch;
+    /* Firefox */
     scrollbar-width: thin;
     scrollbar-color: #1aff00 rgba(10,10,10,0.9);
+    /* Force scrollbar visible — override Chrome Android hiding */
+    position: relative;
   }
 
-  /* Force webkit scrollbar visible inside section div on mobile */
   section div::-webkit-scrollbar {
-    width: 6px;
+    width: 6px !important;
     display: block !important;
+    -webkit-appearance: none !important;
   }
 
   section div::-webkit-scrollbar-track {
-    background: rgba(10,10,10,0.9);
-    border-radius: 5px;
+    background: rgba(10,10,10,0.9) !important;
+    border-radius: 5px !important;
   }
 
   section div::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #1aff00, #00ff88);
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(26,255,0,0.6);
+    background: linear-gradient(135deg, #1aff00, #00ff88) !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 8px rgba(26,255,0,0.6) !important;
+    min-height: 40px !important;
   }
 
   section div h1 { font-size: 20px; margin-bottom: 10px; }
