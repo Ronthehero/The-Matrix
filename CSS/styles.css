@@ -219,7 +219,12 @@ section div {
     flex-direction: column !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
-    background: transparent !important;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   section div {
