@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Matrix — Mind Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  canvas#rain {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 0;
+    opacity: 0.18;
+  }
+
+  svg#mindmap {
+    position: relative;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .center-node {
+    filter: drop-shadow(0 0 18px #00ff41) drop-shadow(0 0 40px #00ff41);
+  }
+
+  .branch-node {
+    filter: drop-shadow(0 0 8px #00cc33);
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+
+  .branch-node:hover {
+    filter: drop-shadow(0 0 18px #00ff88) drop-shadow(0 0 30px #00ff41);
+  }
+
+  .leaf-node {
+    filter: drop-shadow(0 0 4px #009922);
+    cursor: pointer;
+  }
+
+  .leaf-node:hover {
+    filter: drop-shadow(0 0 10px #00ff88);
+  }
+
+  .edge {
+    stroke: #00ff41;
+    stroke-width: 1.5;
+    fill: none;
+    opacity: 0.5;
+    stroke-dasharray: 6 4;
+    animation: dash 2s linear infinite;
+  }
+
+  .edge-leaf {
+    stroke: #006622;
+    stroke-width: 1;
+    fill: none;
+    opacity: 0.4;
+  }
+
+  @keyframes dash {
+    to { stroke-dashoffset: -20; }
+  }
+
+  .label-center {
+    font-family: 'Orbitron', monospace;
+    font-size: 15px;
+    font-weight: 900;
+    fill: #00ff41;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    letter-spacing: 2px;
+  }
+
+  .label-branch {
+    font-family: 'Orbitron', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    fill: #00ff88;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    letter-spacing: 1px;
+  }
+
+  .label-leaf {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8.5px;
+    fill: #44ff88;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+
+  .pulse {
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+
+  .scan {
+    animation: scan 3s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0%, 100% { r: 48; opacity: 1; }
+    50% { r: 54; opacity: 0.7; }
+  }
+
+  #tooltip {
+    position: fixed;
+    background: rgba(0,20,0,0.92);
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    pointer-events: none;
+    display: none;
+    z-index: 10;
+    box-shadow: 0 0 10px #00ff41;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="rain"></canvas>
+<div id="tooltip"></div>
+
+<svg id="mindmap" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#003300"/>
+      <stop offset="100%" stop-color="#000"/>
+    </radialGradient>
+    <radialGradient id="branchGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#001a00"/>
+      <stop offset="100%" stop-color="#000"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ===== EDGES: center to branches ===== -->
+  <!-- Video BG -->
+  <path class="edge" d="M500,310 Q420,250 290,190"/>
+  <!-- Music Player -->
+  <path class="edge" d="M500,310 Q440,280 340,270"/>
+  <!-- Web Games -->
+  <path class="edge" d="M500,310 Q440,330 340,360"/>
+  <!-- Cyber-Edu -->
+  <path class="edge" d="M500,310 Q420,370 290,430"/>
+  <!-- Bio Sections -->
+  <path class="edge" d="M500,310 Q560,250 680,190"/>
+  <!-- Sci-Fi -->
+  <path class="edge" d="M500,310 Q580,280 680,270"/>
+  <!-- Easter Egg -->
+  <path class="edge" d="M500,310 Q580,340 680,370"/>
+  <!-- Tech Stack -->
+  <path class="edge" d="M500,310 Q560,380 660,440"/>
+
+  <!-- ===== LEAF EDGES ===== -->
+  <!-- Video BG leaves -->
+  <line class="edge-leaf" x1="290" y1="190" x2="145" y2="130"/>
+  <line class="edge-leaf" x1="290" y1="190" x2="145" y2="172"/>
+
+  <!-- Music Player leaves -->
+  <line class="edge-leaf" x1="340" y1="270" x2="145" y2="225"/>
+  <line class="edge-leaf" x1="340" y1="270" x2="145" y2="265"/>
+  <line class="edge-leaf" x1="340" y1="270" x2="145" y2="305"/>
+
+  <!-- Web Games leaves -->
+  <line class="edge-leaf" x1="340" y1="360" x2="145" y2="345"/>
+  <line class="edge-leaf" x1="340" y1="360" x2="145" y2="385"/>
+  <line class="edge-leaf" x1="340" y1="360" x2="145" y2="422"/>
+
+  <!-- Cyber-Edu leaves -->
+  <line class="edge-leaf" x1="290" y1="430" x2="145" y2="468"/>
+  <line class="edge-leaf" x1="290" y1="430" x2="145" y2="508"/>
+
+  <!-- Bio leaves -->
+  <line class="edge-leaf" x1="680" y1="190" x2="855" y2="125"/>
+  <line class="edge-leaf" x1="680" y1="190" x2="855" y2="165"/>
+  <line class="edge-leaf" x1="680" y1="190" x2="855" y2="205"/>
+
+  <!-- Sci-Fi leaves -->
+  <line class="edge-leaf" x1="680" y1="270" x2="855" y2="255"/>
+  <line class="edge-leaf" x1="680" y1="270" x2="855" y2="295"/>
+
+  <!-- Easter Egg leaves -->
+  <line class="edge-leaf" x1="680" y1="370" x2="855" y2="360"/>
+  <line class="edge-leaf" x1="680" y1="370" x2="855" y2="400"/>
+
+  <!-- Tech Stack leaves -->
+  <line class="edge-leaf" x1="660" y1="440" x2="855" y2="450"/>
+  <line class="edge-leaf" x1="660" y1="440" x2="855" y2="490"/>
+  <line class="edge-leaf" x1="660" y1="440" x2="855" y2="530"/>
+
+  <!-- ===== CENTER NODE ===== -->
+  <g class="center-node pulse" transform="translate(500,310)">
+    <circle r="60" fill="url(#centerGrad)" stroke="#00ff41" stroke-width="2"/>
+    <circle class="scan" r="48" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
+    <text class="label-center" y="-10">THE</text>
+    <text class="label-center" y="8">MATRIX</text>
+    <text style="font-family:'Share Tech Mono';font-size:7px;fill:#00aa33;text-anchor:middle;dominant-baseline:middle" y="26">by Cyb3r_W4rr!0r</text>
+  </g>
+
+  <!-- ===== BRANCH NODES ===== -->
+  <!-- Video BG -->
+  <g class="branch-node" transform="translate(290,190)" data-tip="Matrix digital rain MP4 looping in background">
+    <ellipse rx="58" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">VIDEO BG</text>
+  </g>
+
+  <!-- Music Player -->
+  <g class="branch-node" transform="translate(340,270)" data-tip="50+ track MP3 player with selector">
+    <ellipse rx="62" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">MUSIC PLAYER</text>
+  </g>
+
+  <!-- Web Games -->
+  <g class="branch-node" transform="translate(340,360)" data-tip="Tetris game built in HTML/CSS/JS">
+    <ellipse rx="58" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">WEB GAMES</text>
+  </g>
+
+  <!-- Cyber-Edu -->
+  <g class="branch-node" transform="translate(290,430)" data-tip="Cybersecurity education section">
+    <ellipse rx="58" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">CYBER-EDU</text>
+  </g>
+
+  <!-- Bio Sections -->
+  <g class="branch-node" transform="translate(680,190)" data-tip="Personal bio and background">
+    <ellipse rx="62" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">BIO SECTIONS</text>
+  </g>
+
+  <!-- Sci-Fi -->
+  <g class="branch-node" transform="translate(680,270)" data-tip="Sci-Fi themed section">
+    <ellipse rx="50" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">SCI-FI</text>
+  </g>
+
+  <!-- Easter Egg -->
+  <g class="branch-node" transform="translate(680,370)" data-tip="Hidden secret_audio.mp3 Easter egg">
+    <ellipse rx="60" ry="22" fill="url(#branchGrad)" stroke="#00cc44" stroke-width="1.5"/>
+    <text class="label-branch">EASTER EGG</text>
+  </g>
+
+  <!-- Tech Stack -->
+  <g class="branch-node" transform="translate(660,440)" data-tip="Core technologies used">
+    <ellipse rx="58" ry="22" fill="url(#branchGrad)" stroke="#00ff41" stroke-width="1.5"/>
+    <text class="label-branch">TECH STACK</text>
+  </g>
+
+  <!-- ===== LEAF NODES ===== -->
+  <!-- Video BG -->
+  <g class="leaf-node" transform="translate(145,130)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Digital-Matrix.mp4</text></g>
+  <g class="leaf-node" transform="translate(145,172)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Loop + Autoplay</text></g>
+
+  <!-- Music Player -->
+  <g class="leaf-node" transform="translate(145,225)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">50+ MP3 Tracks</text></g>
+  <g class="leaf-node" transform="translate(145,265)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Track Selector</text></g>
+  <g class="leaf-node" transform="translate(145,305)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Play/Pause Btn</text></g>
+
+  <!-- Web Games -->
+  <g class="leaf-node" transform="translate(145,345)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">tetris.html</text></g>
+  <g class="leaf-node" transform="translate(145,385)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">tetris.js</text></g>
+  <g class="leaf-node" transform="translate(145,422)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">tetris.css</text></g>
+
+  <!-- Cyber-Edu -->
+  <g class="leaf-node" transform="translate(145,468)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Ethical Hacking</text></g>
+  <g class="leaf-node" transform="translate(145,508)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Pentesting Info</text></g>
+
+  <!-- Bio -->
+  <g class="leaf-node" transform="translate(855,125)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">About Me</text></g>
+  <g class="leaf-node" transform="translate(855,165)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">My Story</text></g>
+  <g class="leaf-node" transform="translate(855,205)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Experience/Edu</text></g>
+
+  <!-- Sci-Fi -->
+  <g class="leaf-node" transform="translate(855,255)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Sci-Fi Section</text></g>
+  <g class="leaf-node" transform="translate(855,295)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Themed Content</text></g>
+
+  <!-- Easter Egg -->
+  <g class="leaf-node" transform="translate(855,360)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">secret_audio.mp3</text></g>
+  <g class="leaf-node" transform="translate(855,400)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">Hidden in playlist</text></g>
+
+  <!-- Tech Stack -->
+  <g class="leaf-node" transform="translate(855,450)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">HTML</text></g>
+  <g class="leaf-node" transform="translate(855,490)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">CSS</text></g>
+  <g class="leaf-node" transform="translate(855,530)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">JavaScript</text></g>
+</svg>
+
+<script>
+// Matrix rain
+const canvas = document.getElementById('rain');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const cols = Math.floor(canvas.width / 16);
+const drops = Array(cols).fill(1);
+function drawRain() {
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00ff41';
+  ctx.font = '14px Share Tech Mono';
+  for (let i = 0; i < drops.length; i++) {
+    const char = String.fromCharCode(0x30A0 + Math.random() * 96);
+    ctx.fillText(char, i * 16, drops[i] * 16);
+    if (drops[i] * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
+}
+setInterval(drawRain, 40);
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Tooltip
+const tooltip = document.getElementById('tooltip');
+document.querySelectorAll('.branch-node').forEach(node => {
+  node.addEventListener('mouseenter', e => {
+    tooltip.textContent = node.dataset.tip;
+    tooltip.style.display = 'block';
+  });
+  node.addEventListener('mousemove', e => {
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top = (e.clientY - 28) + 'px';
+  });
+  node.addEventListener('mouseleave', () => {
+    tooltip.style.display = 'none';
+  });
+});
+</script>
+</body>
+</html>
