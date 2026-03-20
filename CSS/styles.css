@@ -139,10 +139,6 @@ section div {
   font-size: 16px;
 }
 
-/* ═══════════════════════════════════════════
-   MOBILE RESPONSIVE — Cyb3r_W4rr!0r
-   ═══════════════════════════════════════════ */
-
 #nav-toggle {
   display: none;
   position: fixed;
@@ -211,17 +207,43 @@ section div {
   section {
     height: auto;
     min-height: 100vh;
-    padding: 80px 14px 30px 14px;
-    align-items: flex-start;
+    padding: 80px 14px 120px 14px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
   }
 
   section div {
     width: 100%;
     max-width: 100%;
-    max-height: none;
+    max-height: 65vh;
     padding: 14px;
     font-size: 13px;
     line-height: 1.7;
+    text-align: center;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    /* Force visible Matrix scrollbar on mobile */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #1aff00 rgba(10,10,10,0.9);
+  }
+
+  /* Force webkit scrollbar visible inside section div on mobile */
+  section div::-webkit-scrollbar {
+    width: 6px;
+    display: block !important;
+  }
+
+  section div::-webkit-scrollbar-track {
+    background: rgba(10,10,10,0.9);
+    border-radius: 5px;
+  }
+
+  section div::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1aff00, #00ff88);
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(26,255,0,0.6);
   }
 
   section div h1 { font-size: 20px; margin-bottom: 10px; }
