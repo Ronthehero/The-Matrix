@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link id="favicon" rel="icon" type="image/png" href="favicons/favicon-on.png">
-<script>
-  const _fav = document.getElementById("favicon");
-  const _frames = ["favicons/favicon-on.png", "favicons/favicon-off.png"];
-  let _fi = 0;
-  setInterval(() => { _fi = (_fi + 1) % 2; _fav.href = _frames[_fi]; }, 530);
-</script>
 <title>The Matrix — Mind Map</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
@@ -311,47 +305,6 @@
   <g class="leaf-node" transform="translate(855,530)"><rect x="-65" y="-12" width="130" height="24" rx="4" fill="#001100" stroke="#006622" stroke-width="1"/><text class="label-leaf">JavaScript</text></g>
 </svg>
 
-<script>
-// Matrix rain
-const canvas = document.getElementById('rain');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const cols = Math.floor(canvas.width / 16);
-const drops = Array(cols).fill(1);
-function drawRain() {
-  ctx.fillStyle = 'rgba(0,0,0,0.05)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#00ff41';
-  ctx.font = '14px Share Tech Mono';
-  for (let i = 0; i < drops.length; i++) {
-    const char = String.fromCharCode(0x30A0 + Math.random() * 96);
-    ctx.fillText(char, i * 16, drops[i] * 16);
-    if (drops[i] * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  }
-}
-setInterval(drawRain, 40);
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-// Tooltip
-const tooltip = document.getElementById('tooltip');
-document.querySelectorAll('.branch-node').forEach(node => {
-  node.addEventListener('mouseenter', e => {
-    tooltip.textContent = node.dataset.tip;
-    tooltip.style.display = 'block';
-  });
-  node.addEventListener('mousemove', e => {
-    tooltip.style.left = (e.clientX + 14) + 'px';
-    tooltip.style.top = (e.clientY - 28) + 'px';
-  });
-  node.addEventListener('mouseleave', () => {
-    tooltip.style.display = 'none';
-  });
-});
-</script>
+<script src="JS/favicon.js"></script>
 </body>
 </html>
