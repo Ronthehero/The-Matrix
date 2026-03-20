@@ -106,7 +106,7 @@ section {
   text-align: center;
   padding: 50px 20px;
   position: relative;
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
   margin: 0 auto;
   height: 100vh;
   width: 100%;
@@ -219,6 +219,7 @@ section div {
     flex-direction: column !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    background: transparent !important;
   }
 
   section div {
