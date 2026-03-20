@@ -4,10 +4,10 @@
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Tetris</title>    
-<link id="favicon" rel="icon" type="image/png" href="/favicons/favicon-on.png">
+<link id="favicon" rel="icon" type="image/png" href="../favicons/favicon-on.png">
 <script>
   const _fav = document.getElementById("favicon");
-  const _frames = ["/favicons/favicon-on.png", "/favicons/favicon-off.png"];
+  const _frames = ["../favicons/favicon-on.png", "/favicons/favicon-off.png"];
   let _fi = 0;
   setInterval(() => { _fi = (_fi + 1) % 2; _fav.href = _frames[_fi]; }, 530);
 </script>
