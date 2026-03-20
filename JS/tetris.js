@@ -2,9 +2,19 @@ window.addEventListener('DOMContentLoaded', function() {
   const controls = document.getElementById('tetris-onscreen-controls');
   const enableBtn = document.getElementById('enable-onscreen-btn');
   const disableBtn = document.getElementById('disable-onscreen-btn');
-  controls.classList.remove('show');
-  disableBtn.style.display = 'none';
-  enableBtn.style.display = 'inline-block';
+
+  const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+  if (isTouchDevice) {
+    controls.classList.add('show');
+    enableBtn.style.display = 'none';
+    disableBtn.style.display = 'inline-block';
+  } else {
+    controls.classList.remove('show');
+    enableBtn.style.display = 'inline-block';
+    disableBtn.style.display = 'none';
+  }
+
   enableBtn.onclick = function() {
     controls.classList.add('show');
     enableBtn.style.display = 'none';
