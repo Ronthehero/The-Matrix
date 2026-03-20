@@ -1,3 +1,22 @@
+window.addEventListener('DOMContentLoaded', function() {
+  const controls = document.getElementById('tetris-onscreen-controls');
+  const enableBtn = document.getElementById('enable-onscreen-btn');
+  const disableBtn = document.getElementById('disable-onscreen-btn');
+  controls.classList.remove('show');
+  disableBtn.style.display = 'none';
+  enableBtn.style.display = 'inline-block';
+  enableBtn.onclick = function() {
+    controls.classList.add('show');
+    enableBtn.style.display = 'none';
+    disableBtn.style.display = 'inline-block';
+  };
+  disableBtn.onclick = function() {
+    controls.classList.remove('show');
+    disableBtn.style.display = 'none';
+    enableBtn.style.display = 'inline-block';
+  };
+});
+
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 ctx.scale(20, 20);
@@ -220,7 +239,7 @@ function startTetris() {
 }
 
 window.addEventListener('hashchange', () => {
-  if (window.location.hash === "#Tetris") {
+  if (window.location.pathname === '/Web-Games/tetris.html') {
     startTetris();
   } else {
     stopTetris();
