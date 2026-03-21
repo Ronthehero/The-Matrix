@@ -175,19 +175,10 @@ section div {
     text-size-adjust: 100% !important;
   }
 
-  #nav-toggle { display: flex; }
-
-  /* Tint strip behind hamburger */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 48px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.82) 70%, rgba(0,0,0,0) 100%);
-    z-index: 98;
-    pointer-events: none;
+  #nav-toggle {
+    display: flex;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0) 100%) !important;
+    border-radius: 8px;
   }
 
   nav {
