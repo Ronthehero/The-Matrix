@@ -199,16 +199,28 @@ section div {
   }
 
   nav ul {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     background: rgba(0,0,0,0.97);
     padding: 56px 0 16px 0;
     width: 100%;
     border-bottom: 1px solid #1aff0033;
+    /* Dropdown animation */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.35s ease, opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
   }
 
-  nav ul.open { display: flex; }
+  nav ul.open {
+    max-height: 600px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 
   nav ul li {
     display: block;
