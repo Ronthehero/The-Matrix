@@ -177,8 +177,9 @@ section div {
 
   #nav-toggle {
     display: flex;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0) 100%) !important;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.75) 20%, rgba(0,0,0,0) 70%) !important;
     border-radius: 8px;
+    padding: 4px !important;
   }
 
   nav {
