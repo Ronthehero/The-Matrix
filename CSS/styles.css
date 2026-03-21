@@ -219,6 +219,7 @@ section div {
     flex-direction: column !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    background: transparent !important;
   }
 
   section div {
