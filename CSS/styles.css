@@ -184,8 +184,8 @@ section div {
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.78);
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.82) 70%, rgba(0,0,0,0) 100%);
     z-index: 98;
     pointer-events: none;
   }
