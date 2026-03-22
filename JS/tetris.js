@@ -31,7 +31,8 @@ window.addEventListener('DOMContentLoaded', function() {
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 
-ctx.scale(20, 20);
+const isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+ctx.scale(isMobile ? 15 : 20, isMobile ? 15 : 20);
 
 function createBlockTexture(baseColor, lineColor) {
   const textureCanvas = document.createElement('canvas');
