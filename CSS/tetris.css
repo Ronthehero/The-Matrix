@@ -266,17 +266,7 @@ section div {
     text-size-adjust: 100% !important;
   }
 
-  /* Tint strip */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 44px;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 98;
-    pointer-events: none;
-  }
+
 
   nav {
     background: transparent !important;
@@ -295,13 +285,16 @@ section div {
   }
 
   section div {
-    width: 100% !important;
+    width: 96% !important;
     max-width: 100% !important;
-    background: transparent !important;
-    padding: 4px !important;
+    background: rgba(0, 0, 0, 0.82) !important;
+    border: 1px solid rgba(26, 255, 0, 0.25) !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    box-sizing: border-box !important;
   }
 
   section div h1 { font-size: 18px !important; margin-bottom: 4px !important; }
@@ -403,11 +396,6 @@ section div {
 }
 
 @media (max-width: 400px) {
-  #tetris {
-    width: 160px !important;
-    height: 267px !important;
-  }
-
   #tetris-onscreen-controls button {
     width: 64px !important;
     height: 64px !important;
