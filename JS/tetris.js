@@ -30,7 +30,22 @@ window.addEventListener('DOMContentLoaded', function() {
 
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
-ctx.scale(20, 20);
+
+// Resize canvas for mobile
+(function resizeCanvas() {
+  const isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  if (isMobile && window.innerWidth <= 768) {
+    const availH = window.innerHeight - 280; // leave room for controls + music
+    const cellSize = Math.floor(availH / 20);
+    const w = cellSize * 12;
+    const h = cellSize * 20;
+    canvas.width = w;
+    canvas.height = h;
+    ctx.scale(cellSize, cellSize);
+  } else {
+    ctx.scale(20, 20);
+  }
+})();
 
 function createBlockTexture(baseColor, lineColor) {
   const textureCanvas = document.createElement('canvas');
