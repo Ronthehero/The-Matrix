@@ -35,15 +35,13 @@ const ctx = canvas.getContext('2d');
 (function resizeCanvas() {
   const isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
   if (isMobile && window.innerWidth <= 768) {
-    // Available width = 96% of viewport minus padding
-    const availW = Math.floor(window.innerWidth * 0.88);
-    // Cell size based on width fitting 12 cols
-    const cellByW = Math.floor(availW / 12);
-    // Available height = viewport minus controls, music, header
-    const availH = window.innerHeight - 290;
+    // Reserve space: top nav ~50px, score ~40px, controls ~160px, music ~110px = 360px
+    const reserved = 360;
+    const availH = window.innerHeight - reserved;
+    const availW = Math.floor(window.innerWidth * 0.82);
     const cellByH = Math.floor(availH / 20);
-    // Use smaller to ensure it fits both dimensions
-    const cellSize = Math.min(cellByW, cellByH);
+    const cellByW = Math.floor(availW / 12);
+    const cellSize = Math.min(cellByH, cellByW, 20); // cap at 20 to never overflow
     canvas.width = cellSize * 12;
     canvas.height = cellSize * 20;
     ctx.scale(cellSize, cellSize);
