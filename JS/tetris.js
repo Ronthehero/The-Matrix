@@ -35,12 +35,17 @@ const ctx = canvas.getContext('2d');
 (function resizeCanvas() {
   const isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
   if (isMobile && window.innerWidth <= 768) {
-    const availH = window.innerHeight - 280; // leave room for controls + music
-    const cellSize = Math.floor(availH / 20);
-    const w = cellSize * 12;
-    const h = cellSize * 20;
-    canvas.width = w;
-    canvas.height = h;
+    // Available width = 96% of viewport minus padding
+    const availW = Math.floor(window.innerWidth * 0.88);
+    // Cell size based on width fitting 12 cols
+    const cellByW = Math.floor(availW / 12);
+    // Available height = viewport minus controls, music, header
+    const availH = window.innerHeight - 290;
+    const cellByH = Math.floor(availH / 20);
+    // Use smaller to ensure it fits both dimensions
+    const cellSize = Math.min(cellByW, cellByH);
+    canvas.width = cellSize * 12;
+    canvas.height = cellSize * 20;
     ctx.scale(cellSize, cellSize);
   } else {
     ctx.scale(20, 20);
