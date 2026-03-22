@@ -266,7 +266,17 @@ section div {
     text-size-adjust: 100% !important;
   }
 
-
+  /* Tint strip */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 98;
+    pointer-events: none;
+  }
 
   nav {
     background: transparent !important;
@@ -309,12 +319,6 @@ section div {
   /* Hide keyboard hint on mobile */
   section div p[style*="color:#1aff00"] {
     display: none !important;
-  }
-
-  /* Canvas — scale up to fill mobile screen */
-  #tetris {
-    width: 180px !important;
-    height: 300px !important;
   }
 
   /* Hide enable/disable on mobile — controls always visible */
