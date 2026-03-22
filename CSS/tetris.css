@@ -267,31 +267,30 @@ section div {
   }
 
   /* Tint strip */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 44px;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 98;
-    pointer-events: none;
-  }
-
   nav {
     background: transparent !important;
     box-shadow: none !important;
   }
 
+  /* Fix canvas CSS stretch */
+  #Tetris canvas {
+    width: 240px !important;
+    height: 400px !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
   /* Section */
   section {
-    padding: 50px 10px 10px 10px !important;
+    padding: 50px 10px 280px 10px !important;
     background: transparent !important;
     align-items: center !important;
     justify-content: flex-start !important;
     flex-direction: column !important;
-    overflow: hidden !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     box-sizing: border-box !important;
+    height: 100vh !important;
   }
 
   section div {
