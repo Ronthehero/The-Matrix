@@ -205,3 +205,217 @@ section div {
   width: 170px !important;
   height: 56px !important;
 }
+
+
+/* Dpad desktop defaults */
+#tetris-dpad {
+  display: flex;
+  gap: 4px;
+}
+
+#tetris-dpad button,
+#tetris-rotate-btn {
+  background: #0a0a0a;
+  color: #1aff00;
+  border: 1px solid #1aff00;
+  border-radius: 10px;
+  width: 56px;
+  height: 56px;
+  font-size: 22px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(26, 255, 0, 0.3);
+  cursor: pointer;
+}
+
+#tetris-rotate-btn {
+  width: 170px;
+  height: 56px;
+  margin-top: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   TETRIS MOBILE UI
+   ═══════════════════════════════════════════ */
+
+/* Desktop enable/disable button styles */
+#enable-onscreen-btn,
+#disable-onscreen-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 10px 12px;
+  font-size: 15px;
+  background: #ffff00;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#enable-onscreen-btn { display: inline-block; }
+#disable-onscreen-btn { display: none; }
+
+@media (max-width: 768px) {
+
+  html {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+
+  /* Tint strip */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 98;
+    pointer-events: none;
+  }
+
+  nav {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Section */
+  section {
+    padding: 50px 10px 10px 10px !important;
+    background: transparent !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  section div {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    padding: 4px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  section div h1 { font-size: 18px !important; margin-bottom: 4px !important; }
+
+  /* Score and speed text */
+  section div p {
+    font-size: 12px !important;
+    margin: 2px 0 !important;
+    color: #1aff00;
+  }
+
+  /* Hide keyboard hint on mobile */
+  section div p[style*="color:#1aff00"] {
+    display: none !important;
+  }
+
+  /* Canvas — scale up to fill mobile screen */
+  #tetris {
+    width: 180px !important;
+    height: 300px !important;
+  }
+
+  /* Hide enable/disable on mobile — controls always visible */
+  #enable-onscreen-btn,
+  #disable-onscreen-btn {
+    display: none !important;
+  }
+
+  /* On-screen controls — centered at bottom */
+  #tetris-onscreen-controls {
+    position: fixed !important;
+    bottom: 115px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: max-content !important;
+    display: none;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  #tetris-onscreen-controls.show {
+    display: flex !important;
+  }
+
+  #tetris-dpad {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #tetris-dpad button {
+    width: 72px !important;
+    height: 72px !important;
+    font-size: 28px !important;
+    border-radius: 12px !important;
+  }
+
+  #tetris-rotate-btn {
+    width: 234px !important;
+    height: 60px !important;
+    font-size: 18px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Music controls full width */
+  #music-select {
+    position: fixed !important;
+    bottom: 58px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: calc(100% - 20px) !important;
+    font-size: 13px !important;
+    z-index: 13 !important;
+  }
+
+  #play-music-btn,
+  #pause-music-btn {
+    position: fixed !important;
+    bottom: 10px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: calc(100% - 20px) !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    padding: 12px !important;
+    border-radius: 6px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  #tetris {
+    width: 160px !important;
+    height: 267px !important;
+  }
+
+  #tetris-onscreen-controls button {
+    width: 64px !important;
+    height: 64px !important;
+    font-size: 24px !important;
+  }
+
+  #tetris-onscreen-controls button[onclick*="rotate"] {
+    width: 208px !important;
+    height: 56px !important;
+  }
+}
