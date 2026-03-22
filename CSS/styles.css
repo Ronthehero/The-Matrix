@@ -177,6 +177,19 @@ section div {
 
   #nav-toggle { display: flex; }
 
+  /* Tint strip behind hamburger */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 98;
+    pointer-events: none;
+  }
+
 
 
   nav {
