@@ -31,24 +31,7 @@ window.addEventListener('DOMContentLoaded', function() {
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 
-// Resize canvas for mobile
-(function resizeCanvas() {
-  const isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
-  if (isMobile && window.innerWidth <= 768) {
-    // Reserve space: top nav ~50px, score ~40px, controls ~160px, music ~110px = 360px
-    const reserved = 360;
-    const availH = window.innerHeight - reserved;
-    const availW = Math.floor(window.innerWidth * 0.82);
-    const cellByH = Math.floor(availH / 20);
-    const cellByW = Math.floor(availW / 12);
-    const cellSize = Math.min(cellByH, cellByW, 20); // cap at 20 to never overflow
-    canvas.width = cellSize * 12;
-    canvas.height = cellSize * 20;
-    ctx.scale(cellSize, cellSize);
-  } else {
-    ctx.scale(20, 20);
-  }
-})();
+ctx.scale(20, 20);
 
 function createBlockTexture(baseColor, lineColor) {
   const textureCanvas = document.createElement('canvas');
